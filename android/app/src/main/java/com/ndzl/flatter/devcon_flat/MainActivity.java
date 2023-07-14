@@ -49,7 +49,9 @@ public class MainActivity extends FlutterActivity {
         super.onCreate(savedInstanceState);
         Log.i(TAG_LOG,"onCreate");
 
-        new MethodChannel(Objects.requireNonNull(getFlutterEngine()).getDartExecutor(), TAG_METHOD_CHANNEL_NAME).setMethodCallHandler(
+        new MethodChannel(Objects.requireNonNull(getFlutterEngine()).getDartExecutor(),
+                "com.ndzl.dw/ZebraDatawedgeMethodChannel").setMethodCallHandler(
+
                 new MethodCallHandler() {
                     @Override
                     public void onMethodCall(MethodCall call, Result result) {
@@ -64,7 +66,8 @@ public class MainActivity extends FlutterActivity {
                 }
         );
 
-        new EventChannel(Objects.requireNonNull(getFlutterEngine()).getDartExecutor(), TAG_EVENT_CHANNEL_NAME).setStreamHandler(
+        new EventChannel(Objects.requireNonNull(getFlutterEngine()).getDartExecutor(),
+                "com.ndzl.dw/ZebraDatawedgeEventChannel").setStreamHandler(
                 new EventChannel.StreamHandler() {
                     @Override
                     public void onListen(Object arguments, EventSink events) {
